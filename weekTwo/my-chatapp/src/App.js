@@ -68,6 +68,7 @@ function App() {
     <Router className="App">
       <Switch>
         <Route exact path="/" component={Home} />
+
         <PrivateRoute
           path="/chat"
           authenticated={authenticated}
@@ -85,9 +86,16 @@ function App() {
           authenticated={authenticated}
           component={Login}
         />
+        <PublicRoute
+          path="/home"
+          authenticated={authenticated}
+          component={Home}
+        />
       </Switch>
     </Router>
   );
 }
 
 export default App;
+
+
