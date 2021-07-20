@@ -13,6 +13,7 @@ import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 
 
 @Builder
@@ -57,5 +58,8 @@ public class User implements UserDetails {
     private Map<Product, Integer> cart;
 
 
-
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
 }

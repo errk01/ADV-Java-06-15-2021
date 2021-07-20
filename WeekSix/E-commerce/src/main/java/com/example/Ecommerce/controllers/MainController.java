@@ -1,6 +1,7 @@
 package com.example.Ecommerce.controllers;
 
 import com.example.Ecommerce.model.Product;
+import com.example.Ecommerce.service.ProductService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,7 +48,7 @@ public class MainController {
         @GetMapping("/filter")
         public String filter(@RequestParam(required = false) String category,
                              @RequestParam(required = false) String brand, Model model){
-        List<Product> filtered = productService.findByBrandAndOrCategory(brand, category);
+        List<Product> filtered = productService.findByBrandAndCategory(brand, category);
         model.addAttribute("products", filtered);
 
         return "main";
