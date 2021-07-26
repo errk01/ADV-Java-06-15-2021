@@ -3,11 +3,12 @@ package com.example.Ecommerce.controllers;
 import com.example.Ecommerce.model.Product;
 import com.example.Ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-
+@Controller
 public class ProductController {
 
 
@@ -16,7 +17,7 @@ public class ProductController {
 
 
     @GetMapping("/product/{id}")
-    public String show(@PathVariable int id, Model model){
+    public String show(@PathVariable long id, Model model){
         Product product = productService.findById(id);
         model.addAttribute(product);
 
