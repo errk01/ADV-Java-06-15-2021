@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -34,7 +35,7 @@ public class Tweet {
     @ManyToMany(fetch=FetchType.LAZY, cascade ={CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "tweet_tag", joinColumns = @JoinColumn(name = "tweet_id"), inverseJoinColumns =
     @JoinColumn(name = "tag_id"))
-    private List <Tag> tags;
+    private List<Tag> tags;
 
     @NotEmpty(message="Tweet cannot be empty")
     @Length(max = 280, message = "Tweet cannot have more then 280 characters")
