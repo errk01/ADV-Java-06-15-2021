@@ -26,6 +26,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private Long id;
 
     @Email(message="Please provide a valid email")
@@ -53,11 +54,13 @@ public class User {
     private Date createdAt;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_follower", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "follower_id"))
+    @JoinTable(name = "user_followers", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "follower_id"))
     private List<User> followers;
 
     @ManyToMany(mappedBy = "followers")

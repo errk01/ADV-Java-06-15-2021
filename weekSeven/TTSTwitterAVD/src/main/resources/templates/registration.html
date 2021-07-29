@@ -22,16 +22,22 @@
             <input type="text" th:field="*{username}" placeholder="Username" class="form-control"/>
         </div>
         <div class="form-group">
-            <input type="text" th:field="*{email}" placeholder="Email" class="form-control"/>
             <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></label>
+            <input type="text" th:field="*{email}" placeholder="Email" class="form-control"/>
         </div>
         <div class="form-group">
-            <input type="password" th:field="*{password}" placeholder="Password" class="form-control"/>
             <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></label>
+            <input type="password" th:field="*{password}" placeholder="Password" class="form-control"/>
         </div>
         <div class="form-group">
             <button class="btn btn-md btn-success btn-block" name="Submit" value="Submit" type="Submit" th:text="Submit"></button>
         </div>
+    </form>
+</div>
+<div th:if="${success}" class="container">
+    <div th:text="${success}"></div>
+    <form th:action="@{~/login}" method="get">
+        <button class="btn btn-md btn-primary twitter-btn m-3" type="Submit" >Log In</button>
     </form>
 </div>
 </body>
